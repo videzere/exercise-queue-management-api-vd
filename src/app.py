@@ -42,6 +42,14 @@ What would you like to do (type a number and press Enter)?
     # add your options here using conditionals (if)
     if option == 3:
         print_queue()
+    elif option == 1:
+        print_queue()
+    elif option == 2:
+        dequeue()
+    elif option == 4:
+        print_queue()
+    elif option == 5:
+        print_queue()
     elif option == 6:
         print("Bye bye!")
         stop = True

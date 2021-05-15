@@ -11,6 +11,7 @@ class Queue:
     def enqueue(self, item):
         pass
     def dequeue(self):
+        # send(body="its your turn", to=number)
         pass
     def get_queue(self):
         return self._queue
