@@ -12,18 +12,38 @@ def print_queue():
     print(queue.get_queue())
 
 def add():
-    pass
+    cellnumber = input("Write the cellphone number: ")
+    # print(number)
+    queue.enqueue(cellnumber)
+    print("The cellphone number added was: "+cellnumber)
 
 def dequeue():
-    pass
+    # print(queue.get_queue())
+    number = queue.dequeue()
+    # print(number)
+    send(body="Go to your place, thank you!", to=str(number))
+    # print(queue.get_queue())
+    print("Confirmation! Deleted: "+number)
 
 def save():
-    pass
+    # print(queue.get_queue())
+    _queue = queue.get_queue()
+    with open('queue.json', 'w') as json_file:
+        json.dump(_queue, json_file)
+    json_file.close()
+    print("List saved:")
+    print(_queue)
 
 def load():
-    pass 
-        
-    
+    global queue
+    with open('queue.json', 'r') as json_file:
+        json_object = json.load(json_file)
+    json_file.close()
+    print("List loaded:")
+    print(json_object)
+    queue = Queue(mode="FIFO",current_queue=json_object)
+    # print(queue)
+
 print("\nHello, this is the Command Line Interface for a Queue Managment application.")
 stop = False
 while stop == False:
@@ -38,18 +58,18 @@ What would you like to do (type a number and press Enter)?
 - Type 6: To quit
     ''')
 
-    option = int(input("Enter a number:"))
+    option = int(input("Enter a number: "))
     # add your options here using conditionals (if)
     if option == 3:
         print_queue()
     elif option == 1:
-        print_queue()
+        add()
     elif option == 2:
         dequeue()
     elif option == 4:
-        print_queue()
+        save()
     elif option == 5:
-        print_queue()
+        load()
     elif option == 6:
         print("Bye bye!")
         stop = True
